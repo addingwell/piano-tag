@@ -888,7 +888,7 @@ ___TEMPLATE_PARAMETERS___
     "subParams": [
       {
         "type": "TEXT",
-        "name": "text1",
+        "name": "consentStatus",
         "displayName": "Consent Status",
         "simpleValueType": true,
         "help": "The consent status for Piano. The expected values are \u003cb\u003eoptin\u003c/b\u003e, \u003cb\u003eexempt\u003c/b\u003e or \u003cb\u003eoptout\u003c/b\u003e. See this page for more information about the \u003ca href\u003d\"https://developers.atinternet-solutions.com/piano-analytics/data-collection/how-to-send-events/consent\" target\u003d\"_blank\"\u003eConsent Management with Piano\u003c/a\u003e. If this field is blank, the parameter used  is \u003ci\u003evisitor_privacy_mode\u003c/i\u003e.",
@@ -1288,7 +1288,7 @@ const optOutConfig = {
   params: ['visitor_privacy_consent', 'visitor_privacy_mode', 'connection_type', 'device_timestamp_utc']
 };
 
-const consent = eventData.visitor_privacy_mode;
+const consent = eventData.visitor_privacy_mode || data.consentStatus;
 if (data.customConsentList) {
   if (consent === 'exempt' || consent === 'essential') {
     for (let d of data.customConsentList) {
@@ -1316,6 +1316,7 @@ requestHeaders['content-type'] = 'application/json';
 let event = {};
 
 //CONTEXTUAL
+event.visitor_privacy_mode = consent;
 event.device_timestamp_utc = Math.round(getTimestampMillis() / 1000);
 event.event_collection_platform = 'api';
 event.event_collection_version = '2';
@@ -2415,6 +2416,6 @@ scenarios: []
 
 ___NOTES___
 
-Created on 22/08/2024, 15:59:45
+Created on 17/10/2024, 10:48:34
 
 
