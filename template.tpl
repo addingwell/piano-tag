@@ -13,7 +13,7 @@ ___INFO___
   "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
-  "displayName": "Piano Analytics",
+  "displayName": "Piano Analytics by Addingwell",
   "brand": {
     "id": "brand_dummy",
     "displayName": "",
@@ -1276,7 +1276,7 @@ if (pcid) {
   });
 }
 
-const routeParams = '?s=' + data.siteId + '&idclient=' + pcid;
+const routeParams = '?s=' + encodeUriComponent(data.siteId) + '&idclient=' + encodeUriComponent(pcid);
 const apiEndpoint = [data.domain, routeParams].join('/');
 const eventData = getAllEventData();
 const exemptConfig = {
@@ -2416,6 +2416,6 @@ scenarios: []
 
 ___NOTES___
 
-Created on 17/10/2024, 10:48:34
+Created on 19/11/2024, 11:57:19
 
 
