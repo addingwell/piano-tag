@@ -1,13 +1,11 @@
 homepage: "https://www.addingwell.com"
 documentation: "https://github.com/addingwell/piano-tag/blob/master/README.md"
 versions:
+  - sha: 7a448fe00c40d8754c61dbd51209fdac69d68b66
+    changeNotes: Fix encode parameters
   - sha: 1f0578be4e7c846f220f1f010f9440ceaf8b3166
     changeNotes: Update and fix consent status
-
   - sha: 35fe52c8427f93bbbd28ec85b347dcf69109ac4f
     changeNotes: Update Readme
-
   - sha: d047156fb0280d15b2c0966ec7be1cd6443e3452
     changeNotes: Initial release
-
-
