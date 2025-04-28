@@ -1390,7 +1390,7 @@ if (data.inheritEventName === 'inherit') {
       let cookieAtcCart = getCookieValues('_pa_cart')[0];
       let atcCart;
       
-      if (!cookieAtcCart) {
+      if (isEmptyCart(cookieAtcCart)) {
         isNewCart = true;
         const cartCreationEvent = JSON.parse(JSON.stringify(event));
         atcCart = {
@@ -1463,7 +1463,7 @@ if (data.inheritEventName === 'inherit') {
       let cookieRfcCart = getCookieValues('_pa_cart')[0];
       let rfcCart = {};
       
-      if (cookieRfcCart) { 
+      if (!isEmptyCart(cookieRfcCart)) {
         rfcCart = JSON.parse(cookieRfcCart);
        
         const cartUpdateEvent = JSON.parse(JSON.stringify(event));
@@ -1512,7 +1512,7 @@ if (data.inheritEventName === 'inherit') {
       let cookieVcCart = getCookieValues('_pa_cart')[0];
       let vcCart = {};
       
-      if (!cookieVcCart) {
+      if (isEmptyCart(cookieVcCart)) {
         const cartCreationEvent = JSON.parse(JSON.stringify(event));
         vcCart = {
           id: generateUuid(),
@@ -1607,7 +1607,7 @@ if (data.inheritEventName === 'inherit') {
       let cookieAsiCart = getCookieValues('_pa_cart')[0];
       let asiCart = {};
       
-      if (!cookieAsiCart) {
+      if (isEmptyCart(cookieAsiCart)) {
         const cartCreationEvent = JSON.parse(JSON.stringify(event));
         asiCart = {
           id: generateUuid(),
@@ -1703,7 +1703,7 @@ if (data.inheritEventName === 'inherit') {
       let cookieApiCart = getCookieValues('_pa_cart')[0];
       let apiCart = {};
       
-      if (!cookieApiCart) {
+      if (isEmptyCart(cookieApiCart)) {
         const cartCreationEvent = JSON.parse(JSON.stringify(event));
         apiCart = {
           id: generateUuid(),
@@ -1798,7 +1798,7 @@ if (data.inheritEventName === 'inherit') {
     case 'purchase':
       let cookiePCart = getCookieValues('_pa_cart')[0];
       let pCart = {};
-      if (cookiePCart) {
+      if (!isEmptyCart(cookiePCart)) {
         pCart = JSON.parse(cookiePCart);
       }
     
@@ -2162,6 +2162,27 @@ function generateUuid() {
     result = result + i;
   }
   return result;
+}
+
+function isEmptyCart(value) {
+    if(!value) {
+        return true;
+    }
+
+    try {
+        const parsed = JSON.parsed(value);
+
+        if(Array.isArray(parsed)) {
+            return parsed.length === 0;
+        }
+
+        if(typeof parsed === "object" && parsed !== null) {
+            return Object.keys(parsed).length === 0;
+        }
+    } catch (e) {
+        logToConsole("Not parsable Cart JSON"),
+    }
+    return false;
 }
 
 
