@@ -2169,19 +2169,16 @@ function isEmptyCart(value) {
         return true;
     }
 
-    try {
-        const parsed = JSON.parsed(value);
+    const parsed = JSON.parse(value);
 
-        if(Array.isArray(parsed)) {
-            return parsed.length === 0;
-        }
-
-        if(typeof parsed === "object" && parsed !== null) {
-            return Object.keys(parsed).length === 0;
-        }
-    } catch (e) {
-        logToConsole("Not parsable Cart JSON"),
+    if(typeof parsed.length === 'number' && typeof parsed !== 'string') {
+      return parsed.length === 0;
     }
+
+    if(typeof parsed === "object" && parsed !== null) {
+      return Object.keys(parsed).length === 0;
+    }
+
     return false;
 }
 
