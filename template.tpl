@@ -1257,6 +1257,7 @@ const getType = require('getType');
 const makeString = require('makeString');
 const makeNumber = require('makeNumber');
 const makeInteger = require('makeInteger');
+const Object = require('Object');
 
 const isLoggingEnabled = determinateIsLoggingEnabled();
 
@@ -2170,12 +2171,12 @@ function isEmptyCart(value) {
     }
 
     const parsed = JSON.parse(value);
-
-    if(typeof parsed.length === 'number' && typeof parsed !== 'string') {
+    const type = getType(parsed);
+    if(type === "array") {
       return parsed.length === 0;
     }
 
-    if(typeof parsed === "object" && parsed !== null) {
+    if(type === "object") {
       return Object.keys(parsed).length === 0;
     }
 
