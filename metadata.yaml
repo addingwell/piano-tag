@@ -1,6 +1,8 @@
 homepage: "https://www.addingwell.com"
 documentation: "https://github.com/addingwell/piano-tag/blob/master/README.md"
 versions:
+  - sha: e1ff545ed148595c6c3c2479ee2902c942b387e5
+    changeNotes: Fix handle cart
   - sha: 7a448fe00c40d8754c61dbd51209fdac69d68b66
     changeNotes: Fix encode parameters
   - sha: 1f0578be4e7c846f220f1f010f9440ceaf8b3166
