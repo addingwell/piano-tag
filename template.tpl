@@ -190,13 +190,15 @@ ___TEMPLATE_PARAMETERS___
     "type": "TEXT",
     "name": "domain",
     "displayName": "Collection domain",
-    "simpleValueType": true
+    "simpleValueType": true,
+    "help": "Piano\u0027s interface omits the \"https://\" URL prefix. Be sure to prepend \"https://\" to your endpoint (e.g., \"https://xxxxxxx.pa-cd.com\") to ensure your data is posted correctly."
   },
   {
     "type": "TEXT",
     "name": "siteId",
     "displayName": "Site ID",
-    "simpleValueType": true
+    "simpleValueType": true,
+    "help": "Sites can be created by clicking the \"+\" button in :\n- Configuration \u003e Data Collection Portal \u003e Dashboard"
   },
   {
     "type": "GROUP",
