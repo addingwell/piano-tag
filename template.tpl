@@ -199,6 +199,18 @@ ___TEMPLATE_PARAMETERS___
       "simpleValueType": true
     },
     {
+      "type": "TEXT",
+      "name": "cookieName",
+      "displayName": "Cookie Name",
+      "simpleValueType": true,
+      "valueValidators": [
+        {
+          "type": "NON_EMPTY"
+        }
+      ],
+      "defaultValue": "_pcid"
+    },
+    {
       "type": "GROUP",
       "name": "goalTypeListGroup",
       "displayName": "Setup Goal Type",
@@ -1262,8 +1274,9 @@ const createRegex = require('createRegex');
 const testRegex = require('testRegex');
 
 const isLoggingEnabled = determinateIsLoggingEnabled();
+const cookieName = data.cookieName;
 
-let pcid = getCookieValues('_pcid')[0];
+let pcid = getCookieValues(cookieName)[0];
 if (!pcid || isUuid(pcid)) {
   let browserId = "";
   if (isUuid(pcid)) {
@@ -1280,7 +1293,7 @@ if (!pcid || isUuid(pcid)) {
 }
 
 if (pcid) {
-  setCookie('_pcid', pcid, {
+  setCookie(cookieName, pcid, {
     domain: 'auto',
     path: '/',
     samesite: 'Lax',
@@ -2245,23 +2258,7 @@ ___SERVER_PERMISSIONS___
           "key": "cookieAccess",
           "value": {
             "type": 1,
-            "string": "specific"
-          }
-        },
-        {
-          "key": "cookieNames",
-          "value": {
-            "type": 2,
-            "listItem": [
-              {
-                "type": 1,
-                "string": "_pcid"
-              },
-              {
-                "type": 1,
-                "string": "_pa_cart"
-              }
-            ]
+            "string": "any"
           }
         }
       ]
@@ -2341,54 +2338,7 @@ ___SERVER_PERMISSIONS___
                   "mapValue": [
                     {
                       "type": 1,
-                      "string": "_pcid"
-                    },
-                    {
-                      "type": 1,
                       "string": "*"
-                    },
-                    {
-                      "type": 1,
-                      "string": "*"
-                    },
-                    {
-                      "type": 1,
-                      "string": "any"
-                    },
-                    {
-                      "type": 1,
-                      "string": "any"
-                    }
-                  ]
-                },
-                {
-                  "type": 3,
-                  "mapKey": [
-                    {
-                      "type": 1,
-                      "string": "name"
-                    },
-                    {
-                      "type": 1,
-                      "string": "domain"
-                    },
-                    {
-                      "type": 1,
-                      "string": "path"
-                    },
-                    {
-                      "type": 1,
-                      "string": "secure"
-                    },
-                    {
-                      "type": 1,
-                      "string": "session"
-                    }
-                  ],
-                  "mapValue": [
-                    {
-                      "type": 1,
-                      "string": "_pa_cart"
                     },
                     {
                       "type": 1,
