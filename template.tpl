@@ -1419,7 +1419,6 @@ if (data.inheritEventName === 'inherit') {
       break;
 
     case 'add_to_cart':
-
       let isNewCart = false;
       let cookieAtcCart = getCookieValues('_pa_cart')[0];
       let atcCart;
