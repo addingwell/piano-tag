@@ -1,6 +1,8 @@
 homepage: "https://www.addingwell.com"
 documentation: "https://github.com/addingwell/piano-tag/blob/master/README.md"
 versions:
+  - sha: 7429ada4be561096f1a485d59ad04f15e72f8688
+    changeNotes: Update cookie format
   - sha: 7a448fe00c40d8754c61dbd51209fdac69d68b66
     changeNotes: Fix encode parameters
   - sha: 1f0578be4e7c846f220f1f010f9440ceaf8b3166
